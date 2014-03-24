@@ -1,191 +1,148 @@
-Source: cheese
+Source: nautilus
 Section: gnome
 Priority: optional
-Maintainer: BlankOn Developers <blankon-dev@googlegroups.com>
+Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
 Uploaders: @GNOME_TEAM@
-Standards-Version: 3.9.5
-Homepage: https://wiki.gnome.org/Apps/Cheese
-Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-gnome/desktop/unstable/cheese/
-Vcs-Svn: svn://anonscm.debian.org/pkg-gnome/desktop/unstable/cheese/
-Build-Depends: cdbs (>= 0.4.93~),
-               debhelper (>= 9),
+Build-Depends: debhelper (>= 8),
                dh-autoreconf,
-               docbook-xsl,
-               gnome-common,
-               gnome-pkg-tools (>= 0.10),
-               gtk-doc-tools (>= 1.14),
-               intltool (>= 0.50.0),
-               rarian-compat,
-               valac (>= 0.22),
-               libglib2.0-dev (>= 2.38.0),
-               libgdk-pixbuf2.0-dev,
-               libgtk-3-dev (>= 3.10.0),
-               libgnome-desktop-3-dev (>= 3.10.0),
-               libgstreamer1.0-dev (>= 0.11.0),
-               libgstreamer-plugins-base1.0-dev (>= 0.11.0),
-               libgstreamer-plugins-bad1.0-dev (>= 0.11.0),
-               libcairo2-dev (>= 1.10.0),
-               libpango1.0-dev (>= 1.28.0),
-               librsvg2-dev (>= 2.32.0),
-               libclutter-1.0-dev (>= 1.16),
-               libclutter-gtk-1.0-dev (>= 0.91.8),
-               libclutter-gst-2.0-dev (>= 1.9.0),
+               cdbs (>= 0.4.90),
+               gnome-pkg-tools (>= 0.13),
+               libglib2.0-dev (>= 2.35.3),
+               libatk1.0-dev (>= 1.32.0),
+               libgtk-3-dev (>= 3.11.6),
+               libgail-3-dev,
+               libgnome-desktop-3-dev (>= 3.10),
+               libtracker-sparql-0.16-dev,
+               libxml2-dev (>= 2.7.8),
+               libexif-dev (>= 0.6.20),
+               libexempi-dev (>= 2.1.0),
+               libnotify-dev (>= 0.7.0),
+               intltool (>= 0.40.1),
+               gtk-doc-tools (>= 1.4),
+               libxt-dev,
+               libx11-dev,
+               libselinux1-dev,
+               libxrender-dev,
+               libxext-dev,
                x11proto-core-dev,
-               libcanberra-gtk3-dev (>= 0.26),
-               gnome-video-effects-dev,
+               shared-mime-info (>= 0.50),
                gobject-introspection (>= 0.9.12-4~),
-               libgirepository1.0-dev (>= 0.9.6),
-               libxtst-dev,
-               libgudev-1.0-dev,
-               pkg-config (>= 0.24),
-               appdata-tools,
-               yelp-tools
+               libgirepository1.0-dev (>= 0.10.7-1~),
+               libglib2.0-doc,
+               libgtk-3-doc
+Homepage: http://www.gnome.org/projects/nautilus/
+Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-gnome/desktop/unstable/nautilus/
+Vcs-Svn: svn://anonscm.debian.org/pkg-gnome/desktop/unstable/nautilus/
+Standards-Version: 3.9.4
 
-Package: cheese
+Package: nautilus
 Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends},
-         cheese-common (= ${source:Version}),
-         gnome-video-effects
-Recommends: gvfs,
-            gnome-icon-theme,
-            hicolor-icon-theme,
-            nautilus-sendto,
-            yelp
-Suggests: gnome-video-effects-frei0r
-Description: tool to take pictures and videos from your webcam
- A webcam application that supports image and video capture. Makes
- it easy to take photos and videos of you, your friends, pets or whatever
- you want. Allows you to apply fancy visual effects, fine-control image
- settings and has features such as Multi-Burst mode, Countdown timer
- for photos.
-
-Package: cheese-common
-Architecture: all
-Depends: ${misc:Depends}
-Replaces: cheese (<< 2.30.1-1)
-Breaks: cheese (<< 2.30.1-1)
-Multi-Arch: foreign
-Description: Common files for the Cheese tool to take pictures and videos
- A webcam application that supports image and video capture. Makes
- it easy to take photos and videos of you, your friends, pets or whatever
- you want. Allows you to apply fancy visual effects, fine-control image
- settings and has features such as Multi-Burst mode, Countdown timer
- for photos.
+         nautilus-data (>= ${gnome:Version}),
+         nautilus-data (<< ${gnome:NextVersion}),
+         shared-mime-info (>= 0.50),
+         desktop-file-utils (>= 0.7),
+         gvfs (>= 1.3.2),
+         libglib2.0-data,
+         gsettings-desktop-schemas (>= 3.8.0)
+Recommends: eject,
+            librsvg2-common,
+            gvfs-backends,
+            gnome-icon-theme-symbolic,
+            gnome-sushi
+Suggests: brasero (>= 2.26),
+          eog,
+          evince | pdf-viewer,
+          totem | mp3-decoder,
+          xdg-user-dirs,
+          tracker
+Breaks: gnome-volume-manager (<< 2.24),
+        rhythmbox (<< 0.12),
+        gnome-session (<< 2.28),
+        nautilus-sendto-empathy (<< 3.0),
+        gnome-bluetooth (<< 3.0)
+Replaces: nautilus-sendto
+Description: file manager and graphical shell for GNOME
+ Nautilus is the official file manager for the GNOME desktop. It allows
+ to browse directories, preview files and launch applications associated
+ with them. It is also responsible for handling the icons on the GNOME
+ desktop. It works on local and remote filesystems.
  .
- This package contains the common files and translations.
+ Several icon themes and components for viewing different kinds of files
+ are available in separate packages.
 
-Package: libcheese-gtk23
+Package: nautilus-dbg
+Section: debug
+Architecture: any
+Priority: extra
+Depends: nautilus (= ${binary:Version}),
+         ${misc:Depends}
+Replaces: libnautilus-extension1-dbg
+Description: file manager and graphical shell for GNOME - debugging version
+ Nautilus is the official file manager for the GNOME desktop. It allows
+ to browse directories, preview files and launch applications associated
+ with them. It is also responsible for handling the icons on the GNOME
+ desktop. It works on local and remote filesystems.
+ .
+ Several icon themes and components for viewing different kinds of files
+ are available in separate packages.
+ .
+ This development package contains unstripped binaries compiled with
+ debugging symbols needed by gdb.
+
+Package: libnautilus-extension1a
 Architecture: any
 Section: libs
-Depends: ${shlibs:Depends},
-         ${misc:Depends},
-         cheese-common (= ${source:Version})
-Pre-Depends: ${misc:Pre-Depends}
-Multi-Arch: same
-Description: tool to take pictures and videos from your webcam - widgets
- A webcam application that supports image and video capture. Makes
- it easy to take photos and videos of you, your friends, pets or whatever
- you want. Allows you to apply fancy visual effects, fine-control image
- settings and has features such as Multi-Burst mode, Countdown timer
- for photos.
+Depends: ${misc:Depends},
+         ${shlibs:Depends}
+Conflicts: libnautilus-extension1
+Replaces: libnautilus-extension1
+Breaks: nautilus (<< 3.0)
+Description: libraries for nautilus components - runtime version
+ Nautilus is the official file manager and graphical shell for the
+ GNOME desktop.
  .
- This package contains the GTK+ shared library.
+ This package contains a few runtime libraries needed by nautilus' extensions.
 
-Package: libcheese-gtk-dev
+Package: libnautilus-extension-dev
 Architecture: any
 Section: libdevel
-Depends: libcheese-gtk23 (= ${binary:Version}),
-         libcheese-dev (= ${binary:Version}),
-         libglib2.0-dev (>= 2.28.0),
-         libgtk-3-dev (>= 3.4.4),
-         libgstreamer1.0-dev (>= 0.11.0),
-         libgstreamer-plugins-base1.0-dev (>= 0.11.0),
-         libclutter-gtk-1.0-dev (>= 0.91.8),
-         libcanberra-gtk3-dev (>= 0.26),
+Depends: libnautilus-extension1a (= ${binary:Version}),
+         gir1.2-nautilus-3.0 (= ${binary:Version}),
+         libglib2.0-dev (>= 2.35.3),
+         libgtk-3-dev (>= 3.7.7),
+         ${shlibs:Depends},
          ${misc:Depends}
-Suggests: libcheese-doc
-Description: tool to take pictures and videos from your webcam - widgets dev
- A webcam application that supports image and video capture. Makes
- it easy to take photos and videos of you, your friends, pets or whatever
- you want. Allows you to apply fancy visual effects, fine-control image
- settings and has features such as Multi-Burst mode, Countdown timer
- for photos.
+Description: libraries for nautilus components - development version
+ Nautilus is the official file manager and graphical shell for the
+ GNOME desktop.
  .
- This package contains the GTK+ development headers.
+ This package provides the necessary development libraries and include
+ files to develop and compile Nautilus extensions.
 
-Package: libcheese7
-Architecture: any
-Section: libs
-Depends: ${shlibs:Depends},
-         ${misc:Depends},
-         cheese-common (= ${source:Version}),
-         gstreamer1.0-plugins-base (>= 0.11.0),
-         gstreamer1.0-plugins-good (>= 0.11.0),
-         gstreamer1.0-plugins-bad,
-         gstreamer1.0-x
-Pre-Depends: ${misc:Pre-Depends}
-Multi-Arch: same
-Description: tool to take pictures and videos from your webcam - base library
- A webcam application that supports image and video capture. Makes
- it easy to take photos and videos of you, your friends, pets or whatever
- you want. Allows you to apply fancy visual effects, fine-control image
- settings and has features such as Multi-Burst mode, Countdown timer
- for photos.
- .
- This package contains the base shared library.
-
-Package: libcheese-dev
-Architecture: any
-Section: libdevel
-Depends: libcheese7 (= ${binary:Version}),
-         gir1.2-cheese-3.0 (= ${binary:Version}),
-         libglib2.0-dev (>= 2.28.0),
-         libclutter-1.0-dev (>= 1.10.0),
-         libgstreamer1.0-dev (>= 0.11.0),
-         libgstreamer-plugins-base1.0-dev (>= 0.11.0),
-         libclutter-gst-2.0-dev (>= 1.9.0),
-         libgdk-pixbuf2.0-dev,
-         ${misc:Depends}
-Suggests: libcheese-doc
-Replaces: libcheese-gtk-dev (<< 3.0.1-1)
-Breaks: libcheese-gtk-dev (<< 3.0.1-1)
-Description: tool to take pictures and videos from your webcam - base dev
- A webcam application that supports image and video capture. Makes
- it easy to take photos and videos of you, your friends, pets or whatever
- you want. Allows you to apply fancy visual effects, fine-control image
- settings and has features such as Multi-Burst mode, Countdown timer
- for photos.
- .
- This package contains the base development headers.
-
-Package: libcheese-doc
-Architecture: all
-Section: doc
-Depends: ${misc:Depends}
-Suggests: devhelp
-Replaces: libcheese-gtk-dev (<< 3.2.2-2)
-Breaks: libcheese-gtk-dev (<< 3.2.2-2)
-Description: tool to take pictures and videos from your webcam - documentation
- A webcam application that supports image and video capture. Makes
- it easy to take photos and videos of you, your friends, pets or whatever
- you want. Allows you to apply fancy visual effects, fine-control image
- settings and has features such as Multi-Burst mode, Countdown timer
- for photos.
- .
- This package contains the API documentation.
-
-Package: gir1.2-cheese-3.0
+Package: gir1.2-nautilus-3.0
 Architecture: any
 Section: introspection
-Depends: ${misc:Depends},
-         ${gir:Depends}
-Description: tool to take pictures and videos from your webcam - gir bindings
- A webcam application that supports image and video capture. Makes
- it easy to take photos and videos of you, your friends, pets or whatever
- you want. Allows you to apply fancy visual effects, fine-control image
- settings and has features such as Multi-Burst mode, Countdown timer
- for photos.
+Depends: ${gir:Depends},
+         ${shlibs:Depends},
+         ${misc:Depends}
+Conflicts: gir1.0-nautilus-3.0
+Replaces: gir1.0-nautilus-3.0
+Description: libraries for nautilus components - gir bindings
+ Nautilus is the official file manager and graphical shell for the
+ GNOME desktop.
  .
  This package can be used by other packages using the GIRepository format to
  generate dynamic bindings.
+
+Package: nautilus-data
+Architecture: all
+Depends: ${misc:Depends}
+Recommends: nautilus
+Description: data files for nautilus
+ Nautilus is the official file manager and graphical shell for the
+ GNOME desktop.
+ .
+ This package contains pictures, localization files and other data
+ needed by nautilus.
