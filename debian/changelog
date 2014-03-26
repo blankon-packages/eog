@@ -1,3 +1,9 @@
+eog (3.11.90-1blankon2) tambora; urgency=low
+
+  * Bump version Gtk+ 3.11, glib 2.39.0, gnome-desktop3 3.11
+
+ -- Mahyuddin Idram Ahmad <dotovr@di.blankon.in>  Wed, 26 Mar 2014 20:16:59 +0700
+
 eog (3.11.90-1blankon1) tambora; urgency=low
 
   * New upstream release to tambora.
