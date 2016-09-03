@@ -1,21 +1,20 @@
 Source: eog
 Section: gnome
 Priority: optional
-Maintainer: BlankOn Developers <blankon-dev@googlegroups.com.
+Maintainer: BlankOn Developers <blankon-dev@googlegroups.com>
 XSBC-Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
 Uploaders: @GNOME_TEAM@
-Standards-Version: 3.9.6
+Standards-Version: 3.9.8
 Homepage: https://wiki.gnome.org/Apps/EyeOfGnome
-Build-Depends: cdbs (>= 0.4.41),
-               debhelper (>= 8),
+Build-Depends: debhelper (>= 9),
                autotools-dev,
                gnome-pkg-tools (>= 0.10),
                gtk-doc-tools (>= 1.16),
                intltool (>= 0.40.0),
                pkg-config,
-               libgtk-3-dev (>= 3.14.0),
-               libgdk-pixbuf2.0-dev (>= 2.19.1),
-               libglib2.0-dev (>= 2.38.0),
+               libgtk-3-dev (>= 3.19.3),
+               libgdk-pixbuf2.0-dev (>= 2.30.0),
+               libglib2.0-dev (>= 2.42.0),
                libgnome-desktop-3-dev (>= 2.91.2),
                shared-mime-info (>= 0.20),
                gsettings-desktop-schemas-dev (>= 2.91.92),
@@ -27,13 +26,14 @@ Build-Depends: cdbs (>= 0.4.41),
                libexempi-dev (>= 1.99.5),
                libjpeg-dev,
                librsvg2-dev (>= 2.36.2),
-               libxml2-dev (>= 2.0),
                libatk1.0-dev (>= 1.32.0-2~),
                gobject-introspection (>= 0.9.12-4~),
-               libgirepository1.0-dev (>= 0.9.12)
-Build-Depends-Indep: libgdk-pixbuf2.0-doc, libglib2.0-doc, libgtk-3-doc
+               libgirepository1.0-dev (>= 0.9.12),
+               libgdk-pixbuf2.0-doc,
+               libglib2.0-doc,
+               libgtk-3-doc
 Vcs-Svn: svn://anonscm.debian.org/pkg-gnome/desktop/unstable/eog
-Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-gnome/desktop/unstable/eog
+Vcs-Browser: https://anonscm.debian.org/viewvc/pkg-gnome/desktop/unstable/eog
 
 Package: eog
 Architecture: any
@@ -45,30 +45,17 @@ Depends: ${shlibs:Depends},
          gir1.2-peas-1.0
 Recommends: librsvg2-common,
             yelp
-Breaks: eog-plugins (<< 2.91)
+Suggests: eog-plugins
+Breaks: eog-plugins (<< 3.16.4-2~)
 Description: Eye of GNOME graphics viewer program
  eog or the Eye of GNOME is a simple graphics viewer for the GNOME
  desktop which uses the gdk-pixbuf library.  It can deal with large
  images, and zoom and scroll with constant memory usage.  Its goals are
  simplicity and standards compliance.
 
-Package: eog-dbg
-Section: debug
-Architecture: any
-Priority: extra
-Depends: eog (= ${binary:Version}),
-         ${misc:Depends}
-Description: Eye of GNOME graphics viewer program - debugging symbols
- eog or the Eye of GNOME is a simple graphics viewer for the GNOME
- desktop which uses the gdk-pixbuf library.  It can deal with large
- images, and zoom and scroll with constant memory usage.  Its goals are
- simplicity and standards compliance.
- .
- This package contains the debugging symbols for eog.
-
 Package: eog-dev
-Architecture: all
-Depends: eog (>= ${source:Version}),
+Architecture: any
+Depends: eog (= ${binary:Version}),
          libgtk-3-dev,
          ${misc:Depends}
 Description: Development files for the Eye of GNOME
