@@ -10,13 +10,13 @@ XSBC-Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.
 Uploaders: Andreas Henriksson <andreas@fatal.se>, Iain Lane <laney@debian.org>, Michael Biebl <biebl@debian.org>
 Standards-Version: 3.9.8
 Homepage: https://wiki.gnome.org/Apps/EyeOfGnome
-Build-Depends: debhelper (>= 9),
-               autotools-dev,
+Build-Depends: debhelper (>= 10),
                gnome-pkg-tools (>= 0.10),
+               gnome-common,
                gtk-doc-tools (>= 1.16),
                intltool (>= 0.40.0),
                pkg-config,
-               libgtk-3-dev (>= 3.19.3),
+               libgtk-3-dev (>= 3.19.11),
                libgdk-pixbuf2.0-dev (>= 2.30.0),
                libglib2.0-dev (>= 2.42.0),
                libgnome-desktop-3-dev (>= 2.91.2),
@@ -67,4 +67,4 @@ Description: Development files for the Eye of GNOME
  which uses the gdk-pixbuf library.
  .
  This package contains header files and development information, which
- is needed to build plugins for the Eye of GNOME.
+ is needed to build plugins for the Eye of GNOM\
